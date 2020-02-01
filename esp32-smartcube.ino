@@ -91,10 +91,12 @@ class AdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
 class ClientCallbacks : public BLEClientCallbacks {
   // Called when a new connection is established
   void onConnect(BLEClient* pclient) {
+    digitalWrite(LED_BUILTIN, HIGH);
     connected = true;
   }
   // Called when a connection is lost
   void onDisconnect(BLEClient* pclient) {
+    digitalWrite(LED_BUILTIN, LOW);
     connected = false;
   }
 };
@@ -237,8 +239,12 @@ void setup() {
   delay(500);
   Serial.println(F("Done."));
 
+  // relayPin will be set HIGH when the cube is solved
   pinMode(relayPin, OUTPUT);
   digitalWrite(relayPin, LOW);
+
+  // ledPin will be set HIGH when cube is connected 
+  pinMode(LED_BUILTIN, OUTPUT);
 }
 
 // Main program loop function
