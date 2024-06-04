@@ -54,9 +54,11 @@ int getBit(uint8_t* val, int i) {
  */
 uint8_t getNibble(uint8_t val[], int i) {
   if(i % 2 == 1) {
-    return val[(i/2)|0] % 16;
+    // return val[(i/2)|0] % 16;
+    return val[i / 2] & 0x0F;
   }
-  return 0|(val[(i/2)|0] / 16);
+  //return 0|(val[(i/2)|0] / 16);
+  return (val[i / 2] >> 4) & 0x0F;
 }
 
 // CALLBACKS
