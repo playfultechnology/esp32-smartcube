@@ -215,6 +215,7 @@ bool connectToServer() {
     }
 
     Serial.println("READY!");
+    return true;
 }
 
 /**
